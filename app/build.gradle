@@ -1,0 +1,70 @@
+
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.example.mapdemo'
+    compileSdk 34
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.example.mapdemo"
+        minSdk 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","x86_64"
+        }
+
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "MapDemo.apk"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.tencent.map:tencent-map-vector-sdk:6.3.0.250311.940c5007.146962199'
+    implementation 'com.tencent.openmap:foundation:0.5.7.fc32fe3'
+    implementation 'com.tencent.map:sdk-utilities:1.0.10'
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation files('libs\\AMap3DMap_10.1.201_AMapSearch_9.7.4_AMapLocation_6.4.9_20250317.jar')
+    implementation files('libs/mbClientLib-1.0.0.aar')
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation libs.firebase.crashlytics.buildtools
+
+    implementation 'io.github.molihuan:pathselector:1.1.16'
+
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}

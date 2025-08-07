@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MapDemo</string>
+    <string-array name="speed_array">
+        <item>1倍速</item>
+        <item>2倍速</item>
+        <item>4倍速</item>
+        <item>10倍速</item>
+    </string-array>
+</resources>

@@ -1,0 +1,30 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }//增加
+        maven { url 'https://maven.aliyun.com/repository/public' }//增加
+        maven{ url "https://oss.sonatype.org/content/groups/public" }
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }//增加
+        maven { url 'https://maven.aliyun.com/repository/public' }//增加
+        maven{ url "https://oss.sonatype.org/content/groups/public" }
+        maven { url 'https://jitpack.io' }
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "MapDemo"
+include ':app'
